@@ -16,7 +16,13 @@
           <td><%= @products_count.inspect %></td>
           <td><%= @category_count.inspect %></td>
         </tr>
-      </tobdy>  
+      </tobdy> 
+      <tfoot>
+        <tr>
+          <th><%= link_to "Products Page", [:admin, :products], class: "btn btn-primary"%></th>
+          <th><%= link_to "Category Page", [:admin, :products], class: "btn btn-primary"%></th>
+        </tr>
+      </tfoot> 
     </table>
   </div>
 
