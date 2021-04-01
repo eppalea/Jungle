@@ -1,37 +1,40 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :set_admin_category, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: ENV["username"], password: ENV["password"]
 
   # GET /admin/categories
   def index
-    @admin_categories = Admin::Category.all
+    @categories = Category.order(id: :asc).all
   end
 
   # GET /admin/categories/new
   def new
-    @admin_category = Admin::Category.new
+    @category = Category.new
   end
 
   # POST /admin/categories
   def create
-    @admin_category = Admin::Category.new(admin_category_params)
+    @category = Category.new(category_params)
     
-    if @admin_category.save
-      redirect_to @admin_category, notice: 'Category was successfully created.'
+    if @category.save
+      redirect_to [:admin, :categories], notice: 'Category was successfully created.'
     else
       render :new
     end
   end
   
-
   # DELETE /admin/categories/1
   def destroy
-    @admin_category.destroy
-    redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' 
+    @category = Category.find params[:id]
+    @category.destroy
+    redirect_to [:admin, :categories], notice: 'Category was successfully destroyed.' 
   end
 
   private
     
   def category_params
-    params.require(:category).permit(:index)
+    params.require(:category).permit(
+      :name,
+      :category_id
+    )
   end
 end
