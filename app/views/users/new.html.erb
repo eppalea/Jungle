@@ -1,5 +1,6 @@
-<h1>Signup!</h1>
+<h1>Register here:</h1>
 
+<div class="signup-form">
 <%= form_for :user, url: '/users' do |f| %>
 
   Name: <%= f.text_field :name %>
@@ -9,3 +10,4 @@
   <%= f.submit "Submit" %>
 
 <% end %>
+</div>
