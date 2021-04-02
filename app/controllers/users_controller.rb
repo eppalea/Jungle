@@ -10,7 +10,6 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/signup'
-      # redirect_to '/users/new'
     end
   end
   
