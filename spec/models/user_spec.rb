@@ -58,6 +58,24 @@ RSpec.describe User, type: :model do
     authenticate = User.authenticate_with_credentials(@user.email, @user.password)
     expect(authenticate).to_not be_nil
     end
+
+    it 'fails to log in user' do
+      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
+      authenticate = User.authenticate_with_credentials(@user.email, "helloworld")
+      expect(authenticate).to be_nil
+    end
+
+    it 'should ignore whitespace' do
+      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
+      authenticate = User.authenticate_with_credentials("   eppalea@nomail.com", @user.password)
+      expect(authenticate).to_not be_nil
+    end
+
+    it 'should ignore case in email' do
+      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
+      authenticate = User.authenticate_with_credentials("EppAlEA@nomail.com", @user.password)
+      expect(authenticate).to_not be_nil
+    end
   end
 
 end
