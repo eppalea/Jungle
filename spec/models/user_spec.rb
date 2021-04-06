@@ -51,11 +51,15 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email has already been taken")
     end
   end  
+
+  describe '.authenticate_with_credentials' do
+    it 'logs in a user' do
+    @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
+    authenticate = User.authenticate_with_credentials(@user.email, @user.password)
+    expect(authenticate).to_not be_nil
+    end
+  end
+
 end
 
 
-# it 'contains a price' do
-#   @category = Category.create(name: "games")
-#   @product = Product.create(name: "Gameboy", price: nil , quantity: 5, category: @category)
-#   expect(@product.errors.full_messages).to include("Price can't be blank")
-# end
