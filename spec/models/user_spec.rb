@@ -4,27 +4,32 @@ RSpec.describe User, type: :model do
   
   describe 'Validations' do
     it 'creates a user' do
-      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "1234", password_confirmation: "1234")
+      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
       puts @user.errors.full_messages
       expect(@user).to be_valid
     end
       
     it 'emails must be unique' do
-      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "1234", password_confirmation: "1234")
-      @user = User.create(first_name: "Jenny", last_name: "Mac", email: "eppalea@nomail.com", password: "12345", password_confirmation: "12345")
+      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
+      @user = User.create(first_name: "Jenny", last_name: "Mac", email: "eppalea@nomail.com", password: "1234567", password_confirmation: "1234567")
       expect(@user.errors.full_messages).to include("Email has already been taken")
     end
 
     it 'contains first name' do
-      @user = User.create(first_name: nil, last_name: "Turniawan", email: "eppalea@nomail.com", password: "1234", password_confirmation: "1234")
+      @user = User.create(first_name: nil, last_name: "Turniawan", email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
       # puts @user.errors.full_messages
       expect(@user.errors.full_messages).to include("First name can't be blank")
     end
 
 
     it 'contains last name' do
-      @user = User.create(first_name: "EppaLea", last_name: nil, email: "eppalea@nomail.com", password: "1234", password_confirmation: "1234")
+      @user = User.create(first_name: "EppaLea", last_name: nil, email: "eppalea@nomail.com", password: "123456", password_confirmation: "123456")
       expect(@user.errors.full_messages).to include("Last name can't be blank")
+    end
+
+    it 'password has minimum length of 6 characters' do
+      @user = User.create(first_name: "EppaLea", last_name: "Turniawan", email: "eppalea@nomail.com", password: "1234", password_confirmation: "1234")
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 
   end  
