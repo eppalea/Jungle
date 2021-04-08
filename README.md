@@ -3,19 +3,19 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 Displaying the Products Page:
-!["Product Page"]()
+!["Product Page"](https://github.com/eppalea/Jungle/blob/master/docs/Jungle%20-%20Products%20Page.png?raw=true)
 
 
 Displaying My Cart Page:
-!["My Cart Page"]()
+!["My Cart Page"](https://github.com/eppalea/Jungle/blob/master/docs/Jungle%20-%20My%20Cart%20Page.png?raw=true)
 
 
 Displaying the Admin Dashboard page:
-!["Admin Dashboard Page"]()
+!["Admin Dashboard Page"](https://github.com/eppalea/Jungle/blob/master/docs/Jungle%20-%20Admin%20Dashboard%20Page.png?raw=true)
 
 
 Displaying the Admin Products page:
-!["Admin Product Page"]()
+!["Admin Product Page"](https://github.com/eppalea/Jungle/blob/master/docs/Jungle%20-%20Admin%20Products%20Page.png?raw=true)
 
 
 ## Additional Steps for Apple M1 Machines
