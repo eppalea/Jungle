@@ -8,6 +8,11 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true
   validates :quantity, presence: true
+  # validates :quantity, numericality: { greater_than_or_equal_to: 1 }
   validates :category, presence: true
+
+  def sold_out?
+    quantity == 0
+  end
 
 end
